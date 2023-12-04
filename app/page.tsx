@@ -1,95 +1,53 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import { useRef } from 'react';
+import Canvas from './components/Canvas'
+import { clearcanvas, drawLine, erase, pencil } from './components/Drawcomp';
+import { useOnDraw } from './components/Hooks'
+// import './App.css'
+import { FaHeart, FaPencilAlt }from 'react-icons/fa';
 
-export default function Home() {
+export default function App() {
+  const usedrawref=useRef(0)
+  const onDraw=(ctx:CanvasRenderingContext2D,point:{x:number,y:number},prevpoint:{x:number,y:number},initialpoint:{x:number,y:number},finalpoint:{x:number,y:number})=>{
+    if(usedrawref.current==0){
+      drawLine(ctx,point,prevpoint,initialpoint,finalpoint)
+    }
+    else if(usedrawref.current==1){
+      pencil(ctx,point,prevpoint)
+    }
+    else if(usedrawref.current==2){
+      erase(ctx,point,prevpoint,initialpoint,finalpoint)
+    }
+    else if(usedrawref.current==3){
+      // clearcanvas(ctx)
+      ctx.clearRect(0,0,1800,700)
+      ctx.stroke()
+    }
+
+  }
+  // const clear=clearcanvas(ctx)
+
+  
+  const setCanvasRef = useOnDraw(onDraw);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+       <div className="container ml-24 mt-20">
+        <div className='container mx-auto '>
+          <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
+          <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
+          <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
+          <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className='flex items-center justify-center'>
+      <div className='flex-col'>
+          <button onClick={()=>{usedrawref.current=3}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>clear</button><br></br>
+          <button onClick={()=>{usedrawref.current=2}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>erase</button><br></br>
+          <button onClick={()=>{usedrawref.current=0}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>Line</button><br></br>
+          <button onClick={()=>{usedrawref.current=1}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'><FaPencilAlt/></button>
+        </div>
+        <Canvas width={1800} height={700} ref={setCanvasRef}/>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   )
 }

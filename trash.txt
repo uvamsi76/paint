@@ -1,0 +1,46 @@
+// ctx.beginPath();
+  // let c=true
+  // let initialpoint
+  // if(c){
+  //   initialpoint=prevpoint
+  // }
+  // let x=prevpoint.x+point.x
+  // let y=prevpoint.y+point.y
+  // if(!initialpoint) return
+  // ctx.moveTo(0,0)
+  // ctx.lineTo(x,y)
+  // ctx.stroke();
+
+  // ctx.beginPath();
+    // ctx.fillStyle = 'red';
+    // ctx.fillRect(50, 50, 200, 100);
+    // drawLine(prevpoint,point,ctx)
+
+    if(point!=finalpoint) {
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.beginPath();
+        ctx.moveTo(initialpoint.x, initialpoint.y);
+        ctx.lineTo(prevpoint.x, prevpoint.y);
+        ctx.stroke();
+      } // Clear previous drawings
+  
+      if(point==finalpoint) {
+        
+        ctx.strokeStyle = 'black';
+        ctx.beginPath();
+        ctx.moveTo(initialpoint.x, initialpoint.y);
+        ctx.lineTo(finalpoint.x, finalpoint.y);
+        ctx.stroke();
+      } // Clear previous drawings
+  
+      ctx.strokeStyle = 'black';
+      ctx.beginPath();
+      ctx.moveTo(initialpoint.x, initialpoint.y);
+      ctx.lineTo(point.x,point.y);
+      ctx.stroke();
+      
+  
+      // Optionally draw a circle at the current endpoint
+      // ctx.beginPath();
+      // ctx.arc(point.x, point.y, 3, 0, 2 * Math.PI);
+      // ctx.fill();
