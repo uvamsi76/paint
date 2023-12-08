@@ -43,8 +43,8 @@ export default function App() {
         <div className='flex-col'>
             <button onClick={()=>{usedrawref.current=3}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>clear</button><br></br>
             <button onClick={()=>{usedrawref.current=2}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>erase</button><br></br>
-            <button onClick={()=>{usedrawref.current=0}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>Line</button><br></br>
-            <button onClick={()=>{usedrawref.current=1}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'><FaPencilAlt/></button>
+            <button onClick={()=>{usedrawref.current=1}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>Line</button><br></br>
+            <button onClick={()=>{usedrawref.current=0}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'><FaPencilAlt/></button>
         </div>
         <div >
           <Canvas width={1800} height={700} ref={setCanvasRef}/>
