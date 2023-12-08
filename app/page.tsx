@@ -10,10 +10,11 @@ export default function App() {
   const usedrawref=useRef(0)
   const onDraw=(ctx:CanvasRenderingContext2D,point:{x:number,y:number},prevpoint:{x:number,y:number},initialpoint:{x:number,y:number},finalpoint:{x:number,y:number})=>{
     if(usedrawref.current==0){
-      drawLine(ctx,point,prevpoint,initialpoint,finalpoint)
+      pencil(ctx,point,prevpoint)
+      
     }
     else if(usedrawref.current==1){
-      pencil(ctx,point,prevpoint)
+      drawLine(ctx,point,prevpoint,initialpoint,finalpoint)
     }
     else if(usedrawref.current==2){
       erase(ctx,point,prevpoint,initialpoint,finalpoint)
@@ -21,6 +22,7 @@ export default function App() {
     else if(usedrawref.current==3){
       // clearcanvas(ctx)
       ctx.clearRect(0,0,1800,700)
+      // ctx.stroke()
     }
 
   }
