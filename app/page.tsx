@@ -21,7 +21,6 @@ export default function App() {
     else if(usedrawref.current==3){
       // clearcanvas(ctx)
       ctx.clearRect(0,0,1800,700)
-      ctx.stroke()
     }
 
   }
@@ -30,23 +29,24 @@ export default function App() {
   
   const setCanvasRef = useOnDraw(onDraw);
   return (
-    <div>
-       <div className="container ml-24 mt-20">
-        <div className='container mx-auto '>
+    <div className='container '>
+       <div className="container ml-24 mt-20 ">
           <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
           <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
           <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
           <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
-        </div>
+        {/* </div> */}
       </div>
-      <div className='flex items-center justify-center'>
-      <div className='flex-col'>
-          <button onClick={()=>{usedrawref.current=3}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>clear</button><br></br>
-          <button onClick={()=>{usedrawref.current=2}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>erase</button><br></br>
-          <button onClick={()=>{usedrawref.current=0}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>Line</button><br></br>
-          <button onClick={()=>{usedrawref.current=1}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'><FaPencilAlt/></button>
+      <div className='flex items-center'>
+        <div className='flex-col'>
+            <button onClick={()=>{usedrawref.current=3}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>clear</button><br></br>
+            <button onClick={()=>{usedrawref.current=2}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>erase</button><br></br>
+            <button onClick={()=>{usedrawref.current=0}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>Line</button><br></br>
+            <button onClick={()=>{usedrawref.current=1}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'><FaPencilAlt/></button>
         </div>
-        <Canvas width={1800} height={700} ref={setCanvasRef}/>
+        <div >
+          <Canvas width={1800} height={700} ref={setCanvasRef}/>
+        </div>
       </div>
     </div>
   )

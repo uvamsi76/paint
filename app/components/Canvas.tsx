@@ -6,7 +6,7 @@ type proptype={
 }
 const Canvas = (({width , height}:proptype,ref:any) => {
   return (
-    <div >
+    <div>
         <canvas ref={ref} width={width} height={height} style={{border: "1px solid black"}}/>
     </div>
   )

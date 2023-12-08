@@ -25,10 +25,10 @@ export function useOnDraw(onDraw:any) {
     }) 
 
     function initMouseMoveListener(){
+        if(!canvasRef.current) {console.log(canvasRef.current); return;}
         const mousemovelistener=(e:MouseEvent)=>{
             if(!canvasRef.current) return;
             if(isDrawingRef.current){
-                
                 const coord:coordtype=rectify(e.clientX,e.clientY)
                 // console.log(onDraw)
                 const ctx=canvasRef.current.getContext('2d')
@@ -44,7 +44,7 @@ export function useOnDraw(onDraw:any) {
             }
         }
         MouseMoveListenerRef.current=mousemovelistener;
-        window.addEventListener("mousemove", mousemovelistener)
+        canvasRef.current.addEventListener("mousemove", mousemovelistener)
     }
 
     function initMouseDownListener(){
@@ -69,7 +69,7 @@ export function useOnDraw(onDraw:any) {
             console.log('false')
         }
     MouseUpListenerRef.current=listener;
-    window.addEventListener('mouseup',listener)
+    canvasRef.current.addEventListener('mouseup',listener)
     }
 
     function rectify(clientx:number,clienty:number):coordtype{
