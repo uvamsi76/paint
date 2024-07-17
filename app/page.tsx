@@ -33,19 +33,13 @@ export default function App() {
   return (
     <div className='container '>
        <div className="container ml-24 mt-20 ">
-          <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
-          <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
-          <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
-          <button className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>test</button>
+          <button onClick={()=>{usedrawref.current=3}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>clear</button>
+          <button onClick={()=>{usedrawref.current=2}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>erase</button>
+          <button onClick={()=>{usedrawref.current=1}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>Line</button>
+          <button onClick={()=>{usedrawref.current=0}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'><FaPencilAlt/></button>
         {/* </div> */}
       </div>
       <div className='flex items-center'>
-        <div className='flex-col'>
-            <button onClick={()=>{usedrawref.current=3}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>clear</button><br></br>
-            <button onClick={()=>{usedrawref.current=2}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>erase</button><br></br>
-            <button onClick={()=>{usedrawref.current=1}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'>Line</button><br></br>
-            <button onClick={()=>{usedrawref.current=0}} className='bg-white text-gray-800 py-2 px-4 border border-gray-150 m-2'><FaPencilAlt/></button>
-        </div>
         <div >
           <Canvas width={1800} height={700} ref={setCanvasRef}/>
         </div>
