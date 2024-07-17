@@ -44,7 +44,7 @@ export function useOnDraw(onDraw:any) {
             }
         }
         MouseMoveListenerRef.current=mousemovelistener;
-        canvasRef.current.addEventListener("mousemove", mousemovelistener)
+        canvasRef.current.addEventListener("pointermove", mousemovelistener)
     }
 
     function initMouseDownListener(){
@@ -57,7 +57,7 @@ export function useOnDraw(onDraw:any) {
             console.log('true')
         }
     MouseDownListenerRef.current=listener;
-    canvasRef.current.addEventListener('mousedown',listener)
+    canvasRef.current.addEventListener('pointerdown',listener)
     }
 
     function initMouseUpListener(){
@@ -69,7 +69,7 @@ export function useOnDraw(onDraw:any) {
             console.log('false')
         }
     MouseUpListenerRef.current=listener;
-    canvasRef.current.addEventListener('mouseup',listener)
+    canvasRef.current.addEventListener('pointerup',listener)
     }
 
     function rectify(clientx:number,clienty:number):coordtype{
@@ -88,7 +88,7 @@ export function useOnDraw(onDraw:any) {
     function setCanvasRef(ref:any){
         if(!ref) {console.log(ref);return;}
         if(canvasRef.current && MouseDownListenerRef.current){
-            canvasRef.current.removeEventListener('mousedown',MouseDownListenerRef.current);
+            canvasRef.current.removeEventListener('pointerdown',MouseDownListenerRef.current);
         }
         canvasRef.current=ref;
         console.log(ref)
